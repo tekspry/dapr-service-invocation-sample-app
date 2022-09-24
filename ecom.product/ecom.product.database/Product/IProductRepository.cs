@@ -7,6 +7,6 @@ namespace ecom.product.database.ProductDB
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProductById(string productId);
         Task<string> CreateProduct(Product product);
-        Task<string> UpdateProduct(Product product);
+        Task<int> UpdateProduct(Product product);
     }
 }

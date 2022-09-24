@@ -75,6 +75,18 @@ const ProductForm = ({ product, submitted }: Args) => {
             setProductState({ ...productState, price: parseInt(e.target.value) })
           }
         />
+        </div>
+        <div className="form-group mt-2">
+        <label htmlFor="Quantity">Quantity</label>
+        <input
+          type="number"
+          className="form-control"
+          placeholder="Quantity"
+          value={productState.quantity}
+          onChange={(e) =>
+            setProductState({ ...productState, quantity: parseInt(e.target.value) })
+          }
+        />
       </div>
       <div className="form-group mt-2">
         <label htmlFor="image">Image</label>

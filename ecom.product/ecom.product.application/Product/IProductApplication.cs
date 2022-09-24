@@ -7,7 +7,7 @@ namespace ecom.product.application.ProductApp
         Task<ecom.product.domain.Product.Product> GetAsync(string id);
         Task<IEnumerable<ecom.product.domain.Product.Product>> ListAsync();
         Task<string> AddAsync(Product product);
-        Task<string> UpdateQuantityAsync(string id, int quantity);
+        Task<int> UpdateQuantityAsync(string id, int quantity);
         
     }
 }

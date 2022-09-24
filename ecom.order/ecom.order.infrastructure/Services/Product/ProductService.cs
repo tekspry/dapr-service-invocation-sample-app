@@ -6,23 +6,17 @@ namespace ecom.order.infrastructure.Product
     public class ProductService : IProductService
     {
         private readonly HttpClient client;
-
-        private readonly DaprClient daprClient;
-        public ProductService(HttpClient client)//, DaprClient daprClient)
+        public ProductService(HttpClient client)
         {
-            this.client = client;
-            //this.daprClient = daprClient;
+            this.client = client;            
         }
-        public async Task<string> UpdateProductQuantity(string id, int quantity)
-        {
-
-            //await daprClient.InvokeMethodAsync<string>(HttpMethod.Post, "product", "UpdateProductQuantity" );
-            //Console.WriteLine($"order infra Dapr port: {client.}");
+        public async Task<int> UpdateProductQuantity(string id, int quantity)
+        {  
             
-            var response = await client.PostAsJson<string>($"product/product/{id}/updatequnatity/{quantity}", string.Empty);
-            Console.WriteLine($"order infra response: {response.Content}");
-            //return await response.ReadContentAs<string>();
-            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var response = await client.PostAsJson<string>($"product/product/{id}/updatequnatity/{quantity}", string.Empty);            
+            var productPrice = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            return Convert.ToInt32(productPrice);
         }
     }
 }

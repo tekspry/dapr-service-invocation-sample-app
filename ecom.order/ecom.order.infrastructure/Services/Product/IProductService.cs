@@ -2,6 +2,6 @@
 {
     public interface IProductService
     {
-        Task<string> UpdateProductQuantity(string id, int quantity);
+        Task<int> UpdateProductQuantity(string id, int quantity);
     }
 }

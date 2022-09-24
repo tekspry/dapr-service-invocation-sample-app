@@ -30,7 +30,7 @@ namespace ecom.ProductService.Controllers
         public async Task<string> Add(Product product) => await _productApplication.AddAsync(product);
 
         [HttpPost("product/{id}/updatequnatity/{quantity}")]
-        public Task<string> UpdateProductQuantity(string id, int quantity) => _productApplication.UpdateQuantityAsync(id, quantity);
+        public Task<int> UpdateProductQuantity(string id, int quantity) => _productApplication.UpdateQuantityAsync(id, quantity);
 
     }
 }

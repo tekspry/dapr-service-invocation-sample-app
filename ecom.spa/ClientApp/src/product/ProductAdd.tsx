@@ -15,6 +15,7 @@ const ProductAdd = () => {
         availableSince: "",
         description: "",
         imageUrl: "",
+        quantity: 0
     };
 
     return (

@@ -1,5 +1,3 @@
-import {v4 as uuid} from 'uuid';
-
 export type Product = {
         productId: string;
         name: string;
@@ -8,4 +6,5 @@ export type Product = {
         availableSince: string;
         description: string;
         imageUrl: string;
+        quantity: number;
 }

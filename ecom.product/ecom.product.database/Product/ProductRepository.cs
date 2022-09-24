@@ -49,7 +49,7 @@ namespace ecom.product.database.ProductDB
             return await Task.FromResult(product.ProductId);
         }
 
-        public async Task<string> UpdateProduct(Product product)
+        public async Task<int> UpdateProduct(Product product)
         {            
             var key = $"productlist";
             var products = await daprClient.GetStateAsync<List<Product>>(cacheStoreName, "productlist");
@@ -65,7 +65,7 @@ namespace ecom.product.database.ProductDB
 
             await this.SaveProductListToCacheStore(products);            
 
-            return product.ProductId != null? product.ProductId: String.Empty;
+            return product.Price;
         }
 
 

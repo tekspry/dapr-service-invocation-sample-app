@@ -31,7 +31,7 @@ namespace ecom.product.application.ProductApp
             return await _productRepository.CreateProduct(product);
         }
 
-        public async Task<string> UpdateQuantityAsync(string id, int quantity) 
+        public async Task<int> UpdateQuantityAsync(string id, int quantity) 
         {
             var product = await GetAsync(id);
             product.Quantity -= quantity;

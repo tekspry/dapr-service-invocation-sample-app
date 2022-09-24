@@ -20,6 +20,7 @@ const ProductList = () => {
           <th>Product Image</th>
             <th>Product Name</th>
             <th>Product Price</th>
+            <th>Quantity</th>
             <th>Seller Name</th>            
           </tr>
         </thead>
@@ -30,6 +31,7 @@ const ProductList = () => {
                         <td><img className="productImage" src={"http://localhost:3000/" + p.imageUrl}></img></td>
                         <td>{p.name}</td>
                         <td>{p.price}</td>
+                        <td>{p.quantity}</td>
                         <td>{p.seller}</td>                       
 
                     </tr>

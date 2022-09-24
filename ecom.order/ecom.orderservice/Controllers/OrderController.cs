@@ -20,7 +20,7 @@ namespace ecom.order.service.Controllers
         }
 
         [HttpPost("", Name = "SubmitOrder")]        
-        public async Task<IEnumerable<ecom.order.domain.Order.Order>> Submit(OrderDetails order) => await _orderApplication.AddAsync(order);     
+        public async Task<IEnumerable<ecom.order.domain.Order.Order>> Submit(OrderVM order) => await _orderApplication.AddAsync(order);     
         
     }
 }
