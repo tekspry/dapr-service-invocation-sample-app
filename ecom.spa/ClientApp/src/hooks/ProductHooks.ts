@@ -6,8 +6,8 @@ import Problem from "../types/problem";
 import { Product } from "../types/product";
 
 const useFetchProducts = () => {
-  return useQuery<Product[], AxiosError>("products", () =>
-    axios.get(`${Config.baseApiUrl}/product`).then((resp) => resp.data)
+  return useQuery<Product[], AxiosError>("products",  () =>
+    axios.get(`${Config.baseProductApiUrl}/product`).then((resp) => resp.data)
   );
 };
 
@@ -15,7 +15,7 @@ const useAddProduct = () => {
   const queryClient = useQueryClient();
   const nav = useNavigate();
   return useMutation<AxiosResponse, AxiosError<Problem>, Product>(
-    (p) => axios.post(`${Config.baseApiUrl}/product`, p),
+    (p) => axios.post(`${Config.baseProductApiUrl}/product`, p),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("product");
@@ -27,7 +27,7 @@ const useAddProduct = () => {
 
 const useFetchProduct = (id: string) => {
   return useQuery<Product, AxiosError>(["products", id], () =>
-    axios.get(`${Config.baseApiUrl}/product/${id}`).then((resp) => resp.data)
+    axios.get(`${Config.baseProductApiUrl}/product/${id}`).then((resp) => resp.data)
   );
 };
 
@@ -35,7 +35,7 @@ const useDeleteProduct = () => {
   const queryClient = useQueryClient();
   const nav = useNavigate();
   return useMutation<AxiosResponse, AxiosError, Product>(
-    (p) => axios.delete(`${Config.baseApiUrl}/products/${p.productId}`),
+    (p) => axios.delete(`${Config.baseProductApiUrl}/products/${p.productId}`),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("products");

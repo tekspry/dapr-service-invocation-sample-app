@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ecom.order.service.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -19,8 +19,8 @@ namespace ecom.order.service.Controllers
             _logger = logger;
         }
 
-        [HttpPost("", Name = "SubmitOrder")]        
-        public async Task<IEnumerable<ecom.order.domain.Order.Order>> Submit(OrderVM order) => await _orderApplication.AddAsync(order);     
+        [HttpPost (Name = "SubmitOrder")]        
+        public async Task<ecom.order.domain.Order.Order> Submit(Order order) => await _orderApplication.AddAsync(order);     
         
     }
 }

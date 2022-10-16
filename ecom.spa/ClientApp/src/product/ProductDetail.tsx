@@ -3,6 +3,7 @@ import { useDeleteProduct, useFetchProduct } from "../hooks/ProductHooks";
 import ApiStatus from "../apiStatus";
 import { currencyFormatter } from "../config";
 import defaultImage from "../main/logo.png";
+import Orders from "../order/orders";
 
 
 const ProductDetail = () => {
@@ -42,7 +43,8 @@ const ProductDetail = () => {
         </div>
         <div className="row">
           <div className="col-12 mt-3">{data.description}</div>
-        </div>        
+        </div>  
+        <Orders product={data} />    
       </div>
     </div>
   );

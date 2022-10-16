@@ -4,6 +4,6 @@ namespace ecom.order.application.Order
 {
     public interface IOrderApplication
     {
-        Task<IEnumerable<ecom.order.domain.Order.Order>> AddAsync(OrderVM product);
+        Task<ecom.order.domain.Order.Order> AddAsync(ecom.order.domain.Order.Order order);
     }
 }

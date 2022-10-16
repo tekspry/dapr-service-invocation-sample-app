@@ -1,6 +1,8 @@
 import { Order } from "../types/order";
 import { Product } from "../types/product";
 import { useState } from "react";
+import { useAddOrder } from "../hooks/orderHooks";
+import { OrderState } from "../types/orderState";
 
 type Args = {
     product: Product;
@@ -13,14 +15,14 @@ const Orders = ({ product }: Args) => {
         productId: product.productId,
         customerId: "",
         productCount: 0,
-        orderPrice: 0,
-        orderState: "",
+        orderPrice: product.price * product.quantity,
+        orderStatus: OrderState.OrderPlaced,
     }
 
-    const [order, setOrder] = useState<Order>(emptyOrder);
+    const [orderItem, setOrder] = useState<Order>(emptyOrder);
 
     const onOrderSubmitClick = () => {
-        addOrderMutation.mutate(order);
+        addOrderMutation.mutate(orderItem);
         setOrder(emptyOrder);
       };
 
@@ -28,16 +30,16 @@ const Orders = ({ product }: Args) => {
         <>          
           <div className="row">
             <div className="col-4">
-              Quantity
+              <b>Quantity:</b>
             </div>
             <div className="col-4">
               <input
                 id="productCount"
                 className="h-100"
                 type="number"
-                value={order.productCount}
+                value={orderItem.productCount}
                 onChange={(e) =>
-                    setOrder({ ...order, productCount: parseInt(e.target.value) })
+                    setOrder({ ...orderItem, productCount: parseInt(e.target.value) })
                 }
                 placeholder="Quantity"
               ></input>
@@ -47,7 +49,7 @@ const Orders = ({ product }: Args) => {
                 className="btn btn-primary"
                 onClick={() => onOrderSubmitClick()}
               >
-                Add
+                Order
               </button>
             </div>
           </div>
@@ -55,3 +57,4 @@ const Orders = ({ product }: Args) => {
       );
 }
 
+export default Orders;

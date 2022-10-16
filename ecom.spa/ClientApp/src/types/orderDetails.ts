@@ -1,5 +1,5 @@
 import { Customer } from "./customer";
-import { Order } from "./order";
+import { Order } from "./order"; 
 
 export type OrderDetails ={
     orderDate: Date;

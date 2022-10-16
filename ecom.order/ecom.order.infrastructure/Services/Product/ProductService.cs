@@ -1,5 +1,4 @@
-﻿using Dapr.Client;
-using ecom.order.Extensions;
+﻿using ecom.order.Extensions;
 
 namespace ecom.order.infrastructure.Product
 {

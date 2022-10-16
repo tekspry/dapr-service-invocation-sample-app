@@ -1,11 +1,6 @@
 ﻿using ecom.order.domain.Order;
 using ecom.order.infrastructure.Product;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ecom.order.application.Order
 {
@@ -20,28 +15,15 @@ namespace ecom.order.application.Order
             _productService = productService;
             this.logger = logger;
         }
-        public async Task<IEnumerable<ecom.order.domain.Order.Order>> AddAsync(OrderVM orderVM)
-        {
-            var orders = new List<ecom.order.domain.Order.Order>();
+        public async Task<ecom.order.domain.Order.Order> AddAsync(ecom.order.domain.Order.Order order)
+        {   
 
-            var productPrice = await _productService.UpdateProductQuantity(orderVM.ProductId, orderVM.ProductCount);
+            var productPrice = await _productService.UpdateProductQuantity(order.ProductId, order.ProductCount);
+            order.OrderId = Guid.NewGuid().ToString();
+            //order.OrderPrice = order.ProductCount * productPrice;
+            order.OrderState = OrderState.OrderPlaced;
 
-            var order = new ecom.order.domain.Order.Order() 
-            { 
-                ProductCount = orderVM.ProductCount,
-                OrderPrice = orderVM.ProductCount * productPrice,
-
-            };
-
-
-
-            //foreach (var order in orderList.orders)
-            //{
-            //    var productId = await _productService.UpdateProductQuantity(order.ProductId, order.ProductCount);
-            //    orders.Add(order);
-            //}
-
-            return orders;
+            return order;
         }
     }
 }
